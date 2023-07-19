@@ -27,7 +27,7 @@ public class ProfileService {
     private ProfileRepository profileRepository;
     @Autowired
     private CustomProfileRepository customProfileRepository;
-    public ProfileDTO create(ProfileDTO dto){
+    public ProfileDTO create(ProfileDTO dto,Integer prtId){
         check(dto);
         Optional<ProfileEntity> optional=profileRepository.findByPhone(dto.getPhone());
         if(optional.isPresent()){
@@ -45,6 +45,7 @@ public class ProfileService {
         profileEntity.setPassword(MD5Util.encode(dto.getPassword()));
         profileEntity.setStatus(ProfileStatus.ACTIVE);
         profileEntity.setRole(dto.getRole());
+        profileEntity.setPrtId(prtId);
         profileRepository.save(profileEntity);
         dto.setCreateDate(profileEntity.getCreatedDate());
         dto.setId(profileEntity.getId());

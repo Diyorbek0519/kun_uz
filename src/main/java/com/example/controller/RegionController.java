@@ -2,7 +2,9 @@ package com.example.controller;
 
 import com.example.dto.RegionDTO;
 import com.example.enums.Language;
+import com.example.enums.ProfileRole;
 import com.example.service.RegionService;
+import com.example.util.SecurityUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,25 +17,38 @@ import java.util.List;
 public class RegionController {
     @Autowired
     private RegionService regionService;
+
     @PostMapping(value = "/create")
-    public ResponseEntity<RegionDTO> create(@RequestBody RegionDTO regionDTO){
+    public ResponseEntity<RegionDTO> create(@RequestBody RegionDTO regionDTO,
+                                            @RequestHeader("Authorization") String authToken) {
         return ResponseEntity.ok(regionService.create(regionDTO));
     }
+
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<Boolean> update(@PathVariable("id") Integer id,
-            @RequestBody RegionDTO regionDTO){
-        return ResponseEntity.ok(regionService.update(id,regionDTO));
+                                          @RequestBody RegionDTO regionDTO,
+                                          @RequestHeader("Authorization") String authToken) {
+        SecurityUtil.hasRole(authToken, ProfileRole.ADMIN);
+        return ResponseEntity.ok(regionService.update(id, regionDTO));
     }
+
     @PutMapping(value = "/delete/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable("id") Integer id){
+    public ResponseEntity<Boolean> delete(@PathVariable("id") Integer id,
+                                          @RequestHeader("Authorization") String authToken) {
+        SecurityUtil.hasRole(authToken,ProfileRole.ADMIN);
         return ResponseEntity.ok(regionService.delete(id));
     }
+
     @GetMapping(value = "/getAll")
-    public ResponseEntity<List<RegionDTO>> getAll(){
-       return ResponseEntity.ok(regionService.getAll());
+    public ResponseEntity<List<RegionDTO>> getAll( @RequestHeader("Authorization") String authToken) {
+        SecurityUtil.hasRole(authToken,ProfileRole.ADMIN);
+        return ResponseEntity.ok(regionService.getAll());
     }
+
     @GetMapping(value = "/getByLang")
-    public ResponseEntity<List<RegionDTO>> getByLang(@RequestParam("lang")Language language){
+    public ResponseEntity<List<RegionDTO>> getByLang(@RequestParam("lang") Language language,
+                                                     @RequestHeader("Authorization") String authToken) {
+        SecurityUtil.hasRole(authToken,ProfileRole.ADMIN);
         return ResponseEntity.ok(regionService.getByLang(language));
     }
 

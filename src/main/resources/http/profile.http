@@ -1,44 +1,54 @@
 ### create profile
 POST localhost:8082/api/v1/profile/create
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk3NzI0NzksImlkIjo0LCJyb2xlIjoiVVNFUiIsImV4cCI6MTY4OTc3NjA3OSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.VDhEcWx_aO4ycHoO5EzdsKAOODYVluSesofqA-aXfe54HO6Gz2cDxMXHlJxMLPvcutDQF9TAgFcwQyZeWIQ5tw
 
 {
-  "name": "Toshmat",
-  "surname": "Toshmatov",
-  "email": "qwer@mail.ru",
-  "phone": "+998901234567",
-  "role": "MODERATOR",
+  "name": "Begzod",
+  "surname": "Nosirov",
+  "email": "321@mail.ru",
+  "phone": "+998971234567",
+  "role": "USER",
   "password": "12345"
 }
+
 ### update
 PUT localhost:8082/api/v1/profile/update?id=1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk3NjU2NjksImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODk3NjkyNjksImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.0Ir5G40SQy3RyJEAp_6bxiiIR1LV_r3Nn7seUeXM0vfyr0DokNpfFeZfYJR4IL6I8WnvAkc2IqdvleltSj9PHw
 
 {
-  "name": "Vali",
-  "surname": "Valiyev",
-  "email": "abcd@mail.ru",
-  "phone": "+998931234567"
+  "name": "Begzod",
+  "surname": "Nosirov",
+  "email": "321@mail.ru",
+  "phone": "+998971234567"
 }
 
 ### update detail
-PUT localhost:8082/api/v1/profile/updateDetail?id=1
+PUT localhost:8082/api/v1/profile/updateDetail?id=4
 Content-Type: application/json
-
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk3NzI0NzksImlkIjo0LCJyb2xlIjoiVVNFUiIsImV4cCI6MTY4OTc3NjA3OSwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.VDhEcWx_aO4ycHoO5EzdsKAOODYVluSesofqA-aXfe54HO6Gz2cDxMXHlJxMLPvcutDQF9TAgFcwQyZeWIQ5tw
 {
-  "name": "Ali",
+  "name": "Begzod",
   "surname": "Aliyev"
 }
 
 ### get all
 GET localhost:8082/api/v1/profile/getAll?page=0&size=2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk3NjU2NjksImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODk3NjkyNjksImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.0Ir5G40SQy3RyJEAp_6bxiiIR1LV_r3Nn7seUeXM0vfyr0DokNpfFeZfYJR4IL6I8WnvAkc2IqdvleltSj9PHw
+
 
 ### delete
 DELETE localhost:8082/api/v1/profile/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk3NjU2NjksImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODk3NjkyNjksImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.0Ir5G40SQy3RyJEAp_6bxiiIR1LV_r3Nn7seUeXM0vfyr0DokNpfFeZfYJR4IL6I8WnvAkc2IqdvleltSj9PHw
+
 
 ### filter
 POST localhost:8082/api/v1/profile/filter
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk3NjU2NjksImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODk3NjkyNjksImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.0Ir5G40SQy3RyJEAp_6bxiiIR1LV_r3Nn7seUeXM0vfyr0DokNpfFeZfYJR4IL6I8WnvAkc2IqdvleltSj9PHw
 
 {
   "name": "Ali",
