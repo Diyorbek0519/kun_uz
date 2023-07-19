@@ -1,0 +1,30 @@
+### create
+POST localhost:8082/api/v1/articleType/create
+Content-Type: application/json
+
+{
+  "orderNumber": 2,
+  "nameUz": "Maqola",
+  "nameRu": "Статья",
+  "nameEn": "Article"
+}
+
+### update
+PUT localhost:8082/api/v1/articleType/update/1
+Content-Type: application/json
+
+{
+  "orderNumber": 3,
+  "nameUz": "Biznes",
+  "nameRu": "Бизнес",
+  "nameEn": "Biznes"
+}
+
+###delete
+PUT localhost:8082/api/v1/articleType/delete/1
+
+###getALL
+GET localhost:8082/api/v1/articleType/getAll
+
+### get by language (orderNumber null keldi?)
+GET localhost:8082/api/v1/articleType/getByLang?lang=uz

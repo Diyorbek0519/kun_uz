@@ -1,0 +1,47 @@
+### create profile
+POST localhost:8082/api/v1/profile/create
+Content-Type: application/json
+
+{
+  "name": "Toshmat",
+  "surname": "Toshmatov",
+  "email": "qwer@mail.ru",
+  "phone": "+998901234567",
+  "role": "MODERATOR",
+  "password": "12345"
+}
+### update
+PUT localhost:8082/api/v1/profile/update?id=1
+Content-Type: application/json
+
+{
+  "name": "Vali",
+  "surname": "Valiyev",
+  "email": "abcd@mail.ru",
+  "phone": "+998931234567"
+}
+
+### update detail
+PUT localhost:8082/api/v1/profile/updateDetail?id=1
+Content-Type: application/json
+
+{
+  "name": "Ali",
+  "surname": "Aliyev"
+}
+
+### get all
+GET localhost:8082/api/v1/profile/getAll?page=0&size=2
+
+### delete
+DELETE localhost:8082/api/v1/profile/1
+
+### filter
+POST localhost:8082/api/v1/profile/filter
+Content-Type: application/json
+
+{
+  "name": "Ali",
+  "surname": "Valiyev"
+}
+

@@ -1,0 +1,30 @@
+### create
+POST localhost:8082/api/v1/category/create
+Content-Type: application/json
+
+{
+  "orderNumber": 2,
+  "nameUz": "АУДИО",
+  "nameRu": "АУДИО",
+  "nameEn": "АУДИО"
+}
+
+### update
+PUT localhost:8082/api/v1/category/update/1
+Content-Type: application/json
+
+{
+  "orderNumber": 3,
+  "nameUz": "Dolzarb",
+  "nameRu": "Актуальный",
+  "nameEn": "Current"
+}
+
+###delete
+PUT localhost:8082/api/v1/category/delete/1
+
+###getALL
+GET localhost:8082/api/v1/category/getAll
+
+### get by language (orderNumber null keldi?)
+GET localhost:8082/api/v1/category/getByLang?lang=uz
