@@ -1,30 +1,34 @@
 ### create
-POST localhost:8082/api/v1/region/create
+POST localhost:8082/api/v1/region/admin/create
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk4ODQwMTIsImlkIjo0LCJyb2xlIjoiVVNFUiIsImV4cCI6MTY4OTg4NzYxMiwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.gySHuf4DMolOXNtH0EbwuMgxaphtOlNV0oX1CRlbQOcOnv5F6_Lfic5uH_Vx8ytZbzbihkfeY-qVj6pyuOrU6A
 
 {
-  "orderNumber": 1,
+  "orderNumber": 3,
   "nameUz": "Buxoro",
   "nameRu": "Бухара",
   "nameEn": "Bukhara"
 }
 
 ### update
-PUT localhost:8082/api/v1/region/update/1
+PUT localhost:8082/api/v1/region/admin/update/1
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk4ODM0MzYsImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODk4ODcwMzYsImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.mehyUlxKgdq-blTOYcHoMfu5gnV6XehAjZRxVolDjmQ9NjJnwwKPgM0hxnEhqqchEDmEhusgMyoKY7uO_wSTKg
 
 {
-  "orderNumber": 1,
-  "nameUz": "Buxoro",
-  "nameRu": "Бухара",
-  "nameEn": "Bukhara"
+  "orderNumber": 2,
+  "nameUz": "Navoi",
+  "nameRu": "Наваи",
+  "nameEn": "Navai"
 }
 
 ###delete
-PUT localhost:8082/api/v1/region/delete/1
+PUT localhost:8082/api/v1/region/admin/delete/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk4ODM0MzYsImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODk4ODcwMzYsImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.mehyUlxKgdq-blTOYcHoMfu5gnV6XehAjZRxVolDjmQ9NjJnwwKPgM0hxnEhqqchEDmEhusgMyoKY7uO_wSTKg
 
 ###getALL
-GET localhost:8082/api/v1/region/getAll
+GET localhost:8082/api/v1/region/admin/getAll
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk4ODM0MzYsImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2ODk4ODcwMzYsImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.mehyUlxKgdq-blTOYcHoMfu5gnV6XehAjZRxVolDjmQ9NjJnwwKPgM0hxnEhqqchEDmEhusgMyoKY7uO_wSTKg
 
 ### get by language (orderNumber null keldi?)
 GET localhost:8082/api/v1/region/getByLang?lang=uz

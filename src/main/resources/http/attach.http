@@ -1,0 +1,28 @@
+POST http://localhost:8082/api/v1/attach/upload
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="image.jpg"
+
+<E:\OOP\dowload_jpg\dowload_jpg\2imagem.jpg
+
+### get image
+GET http://localhost:8082/api/v1/attach/open/7b3d3554-d012-4ff9-86d5-b6cd0d7fc1f3/img
+
+### save
+POST http://localhost:8082/api/v1/attach/upload2
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="4image.jpg"
+
+< E:\OOP\dowload_jpg\dowload_jpg\4imagem.jpg
+
+### get image
+GET http://localhost:8082/api/v1/attach/open/a9daea31-deb7-46d7-b9d9-1b0e77a8d3f1/general
+
+### pagination
+GET http://localhost:8082/api/v1/attach/get/pageImp?page=2&size=2
+
+###delete
+DELETE localhost:8082/api/v1/attach/delete/f476eb49-6ba2-43d3-9617-ac6d753bbe39

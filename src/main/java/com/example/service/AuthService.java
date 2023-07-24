@@ -20,7 +20,7 @@ public class AuthService {
 
     public ApiResponseDTO login(AuthDTO dto) {
         // check
-        Optional<ProfileEntity> optional = profileRepository.findByPhone(dto.getPhone());
+        Optional<ProfileEntity> optional = profileRepository.findByPhone(dto.getPhone(  ));
         if (optional.isEmpty()) {
             return new ApiResponseDTO(false, "Login or Password not found");
         }
@@ -35,7 +35,6 @@ public class AuthService {
         ProfileDTO response = new ProfileDTO();
         response.setId(profileEntity.getId());
         response.setName(profileEntity.getName());
-
         response.setSurname(profileEntity.getSurname());
         response.setRole(profileEntity.getRole());
         response.setPhone(profileEntity.getPhone());

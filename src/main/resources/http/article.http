@@ -1,0 +1,41 @@
+### create
+POST localhost:8082/api/v1/article/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTAyMDEyNTMsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwMjA0ODUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.TmYKP2jmWf7Tz5a2PJZOzsKQK0nqO0WNK0DIsKY9_8lefSsQ28MBuIW1Al6W_-b05VhNwmBCcTwtTQVU68Tp-w
+
+{
+  "title": "vsvsvsdv",
+  "description": "vsddvs",
+  "content": "The definite article (the) is used when we refer to a part of the body. This is because there is only ONE “right leg” or “neck” or “left kidney” belonging to the patient. It is understood that we are only describing one specific, known position or location.",
+  "sharedCount": 2,
+  "viewCount": 10,
+  "regionId": 4,
+  "categoryId": 3,
+  "imageId": "c8b5405b-adbf-482c-a0c6-8a0118db67f7",
+  "articleType": [1,3]
+}
+
+###update
+PUT localhost:8082/api/v1/article/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTAyMDEyNTMsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwMjA0ODUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.TmYKP2jmWf7Tz5a2PJZOzsKQK0nqO0WNK0DIsKY9_8lefSsQ28MBuIW1Al6W_-b05VhNwmBCcTwtTQVU68Tp-w
+
+{
+  "id": "d2f8018c-4d43-4c68-8851-289d034b6b62",
+  "title": "article example",
+  "description": "example",
+  "content": "The definite article (the) is used when we refer to a part of the body. This is because there is only ONE “right leg” or “neck” or “left kidney” belonging to the patient. It is understood that we are only describing one specific, known position or location.",
+  "regionId": 1,
+  "categoryId": 1,
+  "imageId": "4247af89-5dbe-406d-8341-5bf09344529f"
+}
+
+###delete
+DELETE localhost:8082/api/v1/article/delete?articleId=d827379f-31a6-4c62-8369-423c5c9123ff
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTAyMDEyNTMsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwMjA0ODUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.TmYKP2jmWf7Tz5a2PJZOzsKQK0nqO0WNK0DIsKY9_8lefSsQ28MBuIW1Al6W_-b05VhNwmBCcTwtTQVU68Tp-w
+
+###change status
+PUT localhost:8082/api/v1/article/changeStatus?articleId=d2f8018c-4d43-4c68-8851-289d034b6b62
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTAyMDM5NTYsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwMjA3NTU2LCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.vqGlo14h_VsEg7c8jtb1YjX1PaJFsGy6nYQpIuhVO1BaiwseQqTTprYIe4X2BObhkRX_xzY2RkVDrBUJzHLGDA

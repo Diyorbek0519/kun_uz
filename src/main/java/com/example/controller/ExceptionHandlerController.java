@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.exp.AppBadRequestException;
+import com.example.exp.AppMethodNotAllowedException;
 import com.example.exp.UnAuthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,5 +17,9 @@ public class ExceptionHandlerController {
     @ExceptionHandler(UnAuthorizedException.class)
     public ResponseEntity<String> handler(UnAuthorizedException e) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+    }
+    @ExceptionHandler(AppMethodNotAllowedException.class)
+    public ResponseEntity<String> handler(AppMethodNotAllowedException e){
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(e.getMessage());
     }
 }
