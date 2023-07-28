@@ -16,7 +16,6 @@ public class ArticleDTO {
     private String title;
     private String description;
     private String content;
-    private Integer sharedCount;
     private Integer regionId;
     private Integer categoryId;
     private Integer moderatorId;
@@ -25,7 +24,13 @@ public class ArticleDTO {
     private LocalDateTime createdDate;
     private LocalDateTime publishedDate;
     private Boolean visible;
+    private Integer sharedCount;
     private Integer viewCount;
     private List<Integer> articleType;
+    private List<Integer> tags;
     private String imageId;
+    private AttachDTO image;
+    private RegionDTO region;
+    private CategoryDTO category;
+    private List<TagDTO> tagDTO;
 }

@@ -1,9 +1,7 @@
 package com.example.repository;
 
 import com.example.entity.ArticleTypeEntity;
-import com.example.entity.RegionEntity;
 import com.example.mapper.ArticleTypeMapper;
-import com.example.mapper.RegionMapper;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

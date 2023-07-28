@@ -1,41 +1,117 @@
 ### create
 POST localhost:8082/api/v1/article/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTAyMDEyNTMsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwMjA0ODUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.TmYKP2jmWf7Tz5a2PJZOzsKQK0nqO0WNK0DIsKY9_8lefSsQ28MBuIW1Al6W_-b05VhNwmBCcTwtTQVU68Tp-w
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NTY5OTIsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwNTQzMzkyLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.vxxSZKB64GKEWYInfnXtUCx82Vux4EFGe3GP2PltRHphmx6U7o4Rbywp2v1zPCiXYwWZumWO_AB0nfifRVWMAw
 
 {
-  "title": "vsvsvsdv",
-  "description": "vsddvs",
+  "title": "c++",
+  "description": "oop",
   "content": "The definite article (the) is used when we refer to a part of the body. This is because there is only ONE “right leg” or “neck” or “left kidney” belonging to the patient. It is understood that we are only describing one specific, known position or location.",
   "sharedCount": 2,
-  "viewCount": 10,
-  "regionId": 4,
-  "categoryId": 3,
-  "imageId": "c8b5405b-adbf-482c-a0c6-8a0118db67f7",
-  "articleType": [1,3]
+  "viewCount": 18,
+  "regionId": 1,
+  "categoryId": 1,
+  "imageId": "7c48503d-31e2-4e34-ba2d-02626a92d1a1",
+  "articleType": [
+    3
+  ],
+  "tags": [
+    2,3
+  ]
 }
 
 ###update
 PUT localhost:8082/api/v1/article/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTAyMDEyNTMsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwMjA0ODUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.TmYKP2jmWf7Tz5a2PJZOzsKQK0nqO0WNK0DIsKY9_8lefSsQ28MBuIW1Al6W_-b05VhNwmBCcTwtTQVU68Tp-w
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NTY5OTIsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwNTQzMzkyLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.vxxSZKB64GKEWYInfnXtUCx82Vux4EFGe3GP2PltRHphmx6U7o4Rbywp2v1zPCiXYwWZumWO_AB0nfifRVWMAw
+
 
 {
-  "id": "d2f8018c-4d43-4c68-8851-289d034b6b62",
+  "id": "2caf4639-2ae9-4bf8-bfb8-64fc72cfd2f8",
   "title": "article example",
   "description": "example",
   "content": "The definite article (the) is used when we refer to a part of the body. This is because there is only ONE “right leg” or “neck” or “left kidney” belonging to the patient. It is understood that we are only describing one specific, known position or location.",
   "regionId": 1,
   "categoryId": 1,
-  "imageId": "4247af89-5dbe-406d-8341-5bf09344529f"
+  "imageId": "7630bdf5-fd07-4411-b50e-469cf46b8ffa",
+  "articleType": [
+    1,
+    3
+  ],
+  "tags": [
+    3,4
+  ]
 }
 
 ###delete
-DELETE localhost:8082/api/v1/article/delete?articleId=d827379f-31a6-4c62-8369-423c5c9123ff
+DELETE localhost:8082/api/v1/article/delete?articleId=2caf4639-2ae9-4bf8-bfb8-64fc72cfd2f8
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTAyMDEyNTMsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwMjA0ODUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.TmYKP2jmWf7Tz5a2PJZOzsKQK0nqO0WNK0DIsKY9_8lefSsQ28MBuIW1Al6W_-b05VhNwmBCcTwtTQVU68Tp-w
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NTY5OTIsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwNTQzMzkyLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.vxxSZKB64GKEWYInfnXtUCx82Vux4EFGe3GP2PltRHphmx6U7o4Rbywp2v1zPCiXYwWZumWO_AB0nfifRVWMAw
 
 ###change status
-PUT localhost:8082/api/v1/article/changeStatus?articleId=d2f8018c-4d43-4c68-8851-289d034b6b62
+PUT localhost:8082/api/v1/article/changeStatus?articleId=373b3b12-16be-4862-9fd5-61a70e52647b
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTAyMDM5NTYsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwMjA3NTU2LCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.vqGlo14h_VsEg7c8jtb1YjX1PaJFsGy6nYQpIuhVO1BaiwseQqTTprYIe4X2BObhkRX_xzY2RkVDrBUJzHLGDA
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
+
+###getlast
+GET localhost:8082/api/v1/article/getLast?articleTypeId=3&limit=5
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
+
+###getlastnotIn
+GET localhost:8082/api/v1/article/notInList
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
+
+[
+  "cbb3b1ce-2377-4265-a2bc-12405d343d33",
+   "f89a282a-d379-4dda-aafa-8d885e85d6ba"
+]
+
+###getByIdAndLang
+GET localhost:8082/api/v1/article/getByIdLang?articleId=744fc156-b1d8-4b76-920b-7248ba546d53&lang=uz
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
+
+###getlast4
+GET localhost:8082/api/v1/article/getLast4ArticlesExceptGivenId?articleId=744fc156-b1d8-4b76-920b-7248ba546d53
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
+
+[
+ 1,3,5
+
+]
+
+###getMostReadArticle
+GET localhost:8082/api/v1/article/getMostReadArticle
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
+
+###getLast4ArticlesByTagId
+GET localhost:8082/api/v1/article/getLast4ArticlesByTagId?tagId=4
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
+
+###getlast5byTypeAndRegion
+GET localhost:8082/api/v1/article/getLast5ArticlesByTypeAndRegion?regionId=1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
+
+[
+  1,5
+
+]
+
+###getBYRegionIdPagination
+GET localhost:8082/api/v1/article/getArticlesByRegionId?regionId=1&page=1&size=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
+
+###getBYCategoryIdPagination
+GET localhost:8082/api/v1/article/getArticlesByCategoryId?categoryId=1&page=1&size=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
+
+###getBYRegionIdPagination
+GET localhost:8082/api/v1/article/getArticlesByCt?categoryId=1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA1NDc0MDMsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwNjMzODAzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.jl7wyAYTWaIQs-HLV_fn2dyLpIwp7l40IRPmU4xKkX2SNlLZy6hpXiMwbax3zqzF1_qIdMKbjpdvzqZwF-EhVQ
+
+
+
+
+

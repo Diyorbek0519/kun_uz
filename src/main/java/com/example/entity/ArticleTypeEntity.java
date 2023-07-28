@@ -31,4 +31,6 @@ public class ArticleTypeEntity {
 
     @Column(name ="created_date")
     private LocalDateTime createdDate=LocalDateTime.now();
+    @Column
+    private Integer prtId;
 }

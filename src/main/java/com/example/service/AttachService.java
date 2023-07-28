@@ -7,16 +7,22 @@ import com.example.exp.AppBadRequestException;
 import com.example.exp.ItemNotFound;
 import com.example.repository.AttachRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,9 +34,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class AttachService {
+
+    @Value("${attach.folder.name}")
+    private String folderName;
     @Autowired
     private AttachRepository attachRepository;
-    private final String folderName = "attaches";
+    //private final String folderName = "attaches";
+
     public String saveToSystem(MultipartFile file) {
         //        System.out.println(file.getSize());
 //        System.out.println(file.getName());
@@ -51,6 +61,7 @@ public class AttachService {
         }
 
     }
+
     public byte[] loadImage(String fileName) {
         try {
             BufferedImage originalImage = ImageIO.read(new File("attaches/" + fileName));
@@ -95,15 +106,14 @@ public class AttachService {
             attachDTO.setSize(entity.getSize());
             attachDTO.setPath(entity.getPath());
             attachDTO.setCreatedData(entity.getCreatedData());
-            // any think you want mazgi.
-            attachDTO.setUrl("");
-
+            // any think you want mazgi
             return attachDTO;
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
     }
+
     public String getYmDString() {
         int year = Calendar.getInstance().get(Calendar.YEAR);
         int month = Calendar.getInstance().get(Calendar.MONTH) + 1;
@@ -111,10 +121,12 @@ public class AttachService {
 
         return year + "/" + month + "/" + day; // 2022/04/23
     }
+
     public String getExtension(String fileName) { // mp3/jpg/npg/mp4.....
         int lastIndex = fileName.lastIndexOf(".");
         return fileName.substring(lastIndex + 1);
     }
+
     public byte[] loadImageById(String id) {
         AttachEntity entity = get(id);
         try {
@@ -130,11 +142,21 @@ public class AttachService {
             return new byte[0];
         }
     }
+
+    public AttachDTO getAttachWithURL(String attachId) {
+        if (attachId == null) {
+            return null;
+        }
+        AttachEntity entity = get(attachId);
+        return new AttachDTO(attachId, "attaches/" + entity.getPath() + "/" + entity.getId() + "." + entity.getExtension());
+    }
+
     public AttachEntity get(String id) {
         return attachRepository.findById(id).orElseThrow(() -> {
             throw new AppBadRequestException("File not found");
         });
     }
+
     public byte[] loadByIdGeneral(String id) {
         AttachEntity entity = get(id);
         try {
@@ -152,13 +174,15 @@ public class AttachService {
             return new byte[0];
         }
     }
-    public PageImpl<AttachDTO> pagination(int page, int size){
-        Pageable pageable= PageRequest.of(page,size);
-        Page<AttachEntity> pageObj=attachRepository.findAll(pageable);
-        List<AttachDTO> attachDTOS=pageObj.stream().map(this:: toDTO).collect(Collectors.toList());
-        return new PageImpl<>(attachDTOS,pageable,pageObj.getTotalElements());
+
+    public PageImpl<AttachDTO> pagination(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<AttachEntity> pageObj = attachRepository.findAll(pageable);
+        List<AttachDTO> attachDTOS = pageObj.stream().map(this::toDTO).collect(Collectors.toList());
+        return new PageImpl<>(attachDTOS, pageable, pageObj.getTotalElements());
     }
-    public AttachDTO toDTO(AttachEntity entity){
+
+    public AttachDTO toDTO(AttachEntity entity) {
         AttachDTO attachDTO = new AttachDTO();
         attachDTO.setId(entity.getId());
         attachDTO.setOriginalName(entity.getOriginalName());
@@ -168,19 +192,38 @@ public class AttachService {
         attachDTO.setExtension(entity.getExtension());
         return attachDTO;
     }
-    public Boolean delete(String id){
+
+    public Boolean delete(String id) {
         System.out.println(id);
-        Optional<AttachEntity> optional=attachRepository.findById(id);
-        boolean b=false;
-        if(optional.isEmpty()){
+        Optional<AttachEntity> optional = attachRepository.findById(id);
+        boolean b = false;
+        if (optional.isEmpty()) {
             throw new ItemNotFound("Not found");
         }
         AttachEntity entity = optional.get();
         attachRepository.delete(entity);
-            File file = new File("attaches/"+entity.getPath()+"/"+entity.getId()+"."+entity.getExtension());
-            if(file.exists()){
-                b= file.delete();
+        File file = new File("attaches/" + entity.getPath() + "/" + entity.getId() + "." + entity.getExtension());
+        if (file.exists()) {
+            b = file.delete();
+        }
+        return b;
+    }
+    public ResponseEntity<Resource> download(String id) {
+        AttachEntity entity = get(id);
+        try {
+            String url = folderName + "/" + entity.getPath() + "/" + id + "." + entity.getExtension();
+
+            Path file = Paths.get(url);
+            Resource resource = new UrlResource(file.toUri());
+
+            if (resource.exists() || resource.isReadable()) {
+                return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename=\"" + entity.getOriginalName() + "\"").body(resource);
+            } else {
+                throw new RuntimeException("Could not read the file!");
             }
-           return b;
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Error: " + e.getMessage());
+        }
     }
 }

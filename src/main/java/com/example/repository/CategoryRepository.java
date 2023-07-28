@@ -35,4 +35,16 @@ public interface CategoryRepository extends CrudRepository<CategoryEntity,Intege
             " from category where visible = true order by order_number", nativeQuery = true)
     List<CategoryMapper> findAllByLang(@Param("lang") String lang);
 
+    @Query(value = "select order_number as orderNumber, " +
+            "CASE :lang " +
+            "   WHEN 'en' THEN name_en " +
+            "   WHEN 'ru' THEN name_ru" +
+            "   ELSE name_uz" +
+            " END as name" +
+            " from category where visible = true and id=:categoryId", nativeQuery = true)
+    CategoryMapper findByLang(@Param("lang") String lang,
+                              @Param("categoryId") Integer id);
+
+
+
 }

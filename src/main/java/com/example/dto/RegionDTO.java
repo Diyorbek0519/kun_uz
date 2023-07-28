@@ -16,4 +16,12 @@ public class RegionDTO {
     private String nameEn;
     private String name;
     private LocalDateTime createdDate;
+
+    public RegionDTO() {
+    }
+
+    public RegionDTO(Integer orderNumber, String name) {
+        this.orderNumber = orderNumber;
+        this.name = name;
+    }
 }

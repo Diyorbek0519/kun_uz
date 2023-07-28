@@ -5,24 +5,22 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CategoryDTO {
+public class TagDTO {
     private Integer id;
-    private Integer orderNumber;
     private String nameUz;
     private String nameRu;
     private String nameEn;
     private String name;
     private LocalDateTime createdDate;
 
-    public CategoryDTO() {
+    public TagDTO() {
     }
 
-    public CategoryDTO(Integer orderNumber, String name) {
-        this.orderNumber = orderNumber;
+    public TagDTO(String name) {
         this.name = name;
     }
-
 }

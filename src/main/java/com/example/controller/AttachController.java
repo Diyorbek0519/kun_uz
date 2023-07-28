@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.dto.AttachDTO;
 import com.example.service.AttachService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
@@ -46,5 +47,10 @@ public class AttachController {
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable("id") String id){
         return ResponseEntity.ok(attachService.delete(id));
+    }
+
+    @GetMapping("/download/{id}")
+    public ResponseEntity<Resource> download(@PathVariable("id") String id) {
+        return attachService.download(id);
     }
 }

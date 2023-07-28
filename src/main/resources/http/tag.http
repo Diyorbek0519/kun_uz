@@ -1,0 +1,10 @@
+### create
+POST localhost:8082/api/v1/tag/create
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NDIzMTgsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwNTI4NzE4LCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.Z1x0CA_3-lIrluyAQ8S7pmUJsYx5QVKWhZq8ZwcWlBYJO15cRQalM-g8XDXxt7UYs1AiWfWXF6mwhcl9cGgh1A
+
+{
+  "nameUz": "respublika",
+  "nameRu": "республика",
+  "nameEn": "republic"
+}

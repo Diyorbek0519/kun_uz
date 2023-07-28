@@ -6,12 +6,14 @@ import com.example.entity.ArticleTypeEntity;
 import com.example.entity.CategoryEntity;
 import com.example.enums.Language;
 import com.example.exp.AppBadRequestException;
+import com.example.exp.ItemNotFound;
 import com.example.repository.ArticletypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArticleTypeService {
@@ -71,5 +73,14 @@ public class ArticleTypeService {
             dtoList.add(dto);
         });
         return dtoList;
+    }
+
+    public void checking(List<Integer> articleType) {
+       articleType.forEach(t->{
+           Optional<ArticleTypeEntity> optional=articletypeRepository.findById(t);
+           if(optional.isEmpty()){
+               throw new AppBadRequestException("Given articleType is not found");
+           }
+       });
     }
 }

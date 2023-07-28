@@ -20,6 +20,7 @@ public class SecuredFilterConfig {
         bean.addUrlPatterns("/api/v1/category/*");
         bean.addUrlPatterns("/api/v1/articleType/*");
         bean.addUrlPatterns("/api/v1/article/*");
+        bean.addUrlPatterns("/api/v1/tag/*");
         return bean;
     }
 }

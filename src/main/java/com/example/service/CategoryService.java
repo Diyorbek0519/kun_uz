@@ -6,6 +6,7 @@ import com.example.entity.CategoryEntity;
 import com.example.entity.RegionEntity;
 import com.example.enums.Language;
 import com.example.exp.AppBadRequestException;
+import com.example.mapper.CategoryMapper;
 import com.example.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,6 +72,13 @@ public class CategoryService {
             dtoList.add(dto);
         });
         return dtoList;
+    }
+    public CategoryDTO getByLangAndId(Integer id, Language language){
+        CategoryMapper mapper =categoryRepository.findByLang(language.name(),id);
+        if(mapper==null){
+            throw new AppBadRequestException("category mapper is null");
+        }
+        return new CategoryDTO(mapper.getOrderNumber(), mapper.getName());
     }
 
 }

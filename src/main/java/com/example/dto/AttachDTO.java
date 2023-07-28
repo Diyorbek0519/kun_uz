@@ -17,4 +17,12 @@ public class AttachDTO {
     private String extension;
     private LocalDateTime createdData;
     private String url;
+
+    public AttachDTO() {
+    }
+
+    public AttachDTO(String id, String url) {
+        this.id = id;
+        this.url = url;
+    }
 }

@@ -1,12 +1,13 @@
 ### create
 POST localhost:8082/api/v1/articleType/create
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTAzNzA2NDQsImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2OTA0NTcwNDQsImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.dmDxRj3grYTJ53ifedkWNhOFbXiJ5PSp4o43GrdQddDD05YbCTe0DMmISl8kvmPyUBiW4tOZEO8-i8cI37BsIQ
 
 {
-  "orderNumber": 2,
-  "nameUz": "Maqola",
-  "nameRu": "Статья",
-  "nameEn": "Article"
+  "orderNumber": 5,
+  "nameUz": "Havo yo'llari",
+  "nameRu": "авиатция",
+  "nameEn": "Airways"
 }
 
 ### update

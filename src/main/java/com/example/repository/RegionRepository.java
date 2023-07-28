@@ -36,4 +36,15 @@ public interface RegionRepository extends CrudRepository<RegionEntity,Integer> {
             " from region where visible = true order by order_number", nativeQuery = true)
     List<RegionMapper> findAllByLang(@Param("lang") String lang);
 
+    @Query(value = "select  order_number as orderNumber, " +
+            "CASE :lang " +
+            "   WHEN 'en' THEN name_en " +
+            "   WHEN 'ru' THEN name_ru" +
+            "   ELSE name_uz" +
+            " END as name" +
+            " from region where visible = true and id=:regionId", nativeQuery = true)
+    RegionMapper findByLang(@Param("lang") String lang,
+                            @Param("regionId") Integer regionId);
+
+
 }

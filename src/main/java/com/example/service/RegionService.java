@@ -4,12 +4,14 @@ import com.example.dto.RegionDTO;
 import com.example.entity.RegionEntity;
 import com.example.enums.Language;
 import com.example.exp.AppBadRequestException;
+import com.example.mapper.RegionMapper;
 import com.example.repository.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RegionService {
@@ -71,6 +73,13 @@ public class RegionService {
             dtoList.add(dto);
         });
         return dtoList;
+    }
+    public RegionDTO getRegionWithOrderNumberAndName(Integer regionId, Language language){
+        RegionMapper mapper=regionRepository.findByLang(language.name(),regionId);
+        if(mapper==null){
+            throw new AppBadRequestException("region visible is false");
+        }
+        return new RegionDTO(mapper.getOrderNumber(), mapper.getName());
     }
 
 
