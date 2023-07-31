@@ -14,38 +14,43 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/category/")
+@RequestMapping("/api/v1/category")
 public class CategoryController {
     @Autowired
     private CategoryService categoryService;
+
     @PostMapping(value = "/create")
     public ResponseEntity<CategoryDTO> create(@RequestBody CategoryDTO categoryDTO,
-                                              HttpServletRequest request){
+                                              HttpServletRequest request) {
         SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(categoryService.create(categoryDTO));
     }
+
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<Boolean> update(@PathVariable("id") Integer id,
                                           @RequestBody CategoryDTO categoryDTO,
-                                         HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
-        return ResponseEntity.ok(categoryService.update(id,categoryDTO));
+                                          HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
+        return ResponseEntity.ok(categoryService.update(id, categoryDTO));
     }
+
     @PutMapping(value = "/delete/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable("id") Integer id,
-                                          HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
+                                          HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(categoryService.delete(id));
     }
+
     @GetMapping(value = "/getAll")
-    public ResponseEntity<List<CategoryDTO>> getAll(HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
+    public ResponseEntity<List<CategoryDTO>> getAll(HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(categoryService.getAll());
     }
+
     @GetMapping(value = "/getByLang")
     public ResponseEntity<List<CategoryDTO>> getByLang(@RequestParam("lang") Language language,
-                                                      HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
+                                                       HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(categoryService.getByLang(language));
     }
 }

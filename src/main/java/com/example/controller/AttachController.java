@@ -22,10 +22,12 @@ public class AttachController {
         String fileName = attachService.saveToSystem(file);
         return ResponseEntity.ok().body(fileName);
     }
+
     @PostMapping("/upload2")
     public ResponseEntity<AttachDTO> upload2(@RequestParam("file") MultipartFile file) {
         return ResponseEntity.ok().body(attachService.save(file));
     }
+
     @GetMapping(value = "/open/{fileName}", produces = MediaType.IMAGE_PNG_VALUE)
     public byte[] open(@PathVariable("fileName") String fileName) {
         return this.attachService.loadImage(fileName);
@@ -35,17 +37,20 @@ public class AttachController {
     public byte[] openImageById(@PathVariable("id") String id) {
         return attachService.loadImageById(id);
     }
+
     @GetMapping(value = "/open/{id}/general", produces = MediaType.ALL_VALUE)
     public byte[] openByIdGeneral(@PathVariable("id") String id) {
         return attachService.loadByIdGeneral(id);
     }
+
     @GetMapping(value = "/get/pageImp")
     public ResponseEntity<PageImpl<AttachDTO>> pagination(@RequestParam("page") int page,
-                                                          @RequestParam("size") int size){
-        return ResponseEntity.ok(attachService.pagination(page-1,size));
+                                                          @RequestParam("size") int size) {
+        return ResponseEntity.ok(attachService.pagination(page - 1, size));
     }
+
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Boolean> delete(@PathVariable("id") String id){
+    public ResponseEntity<Boolean> delete(@PathVariable("id") String id) {
         return ResponseEntity.ok(attachService.delete(id));
     }
 

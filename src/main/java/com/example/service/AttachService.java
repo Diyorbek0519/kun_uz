@@ -37,6 +37,8 @@ public class AttachService {
 
     @Value("${attach.folder.name}")
     private String folderName;
+    @Value("${attach.url}")
+    private String attachUrl;
     @Autowired
     private AttachRepository attachRepository;
     //private final String folderName = "attaches";
@@ -106,12 +108,16 @@ public class AttachService {
             attachDTO.setSize(entity.getSize());
             attachDTO.setPath(entity.getPath());
             attachDTO.setCreatedData(entity.getCreatedData());
+            attachDTO.setUrl(getUrl(entity.getId()));
             // any think you want mazgi
             return attachDTO;
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+    }
+    public String getUrl(String id){
+         return attachUrl+"/open/"+id+"/img";
     }
 
     public String getYmDString() {
@@ -147,8 +153,7 @@ public class AttachService {
         if (attachId == null) {
             return null;
         }
-        AttachEntity entity = get(attachId);
-        return new AttachDTO(attachId, "attaches/" + entity.getPath() + "/" + entity.getId() + "." + entity.getExtension());
+        return new AttachDTO(attachId, getUrl(attachId));
     }
 
     public AttachEntity get(String id) {

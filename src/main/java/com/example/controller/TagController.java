@@ -18,11 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TagController {
     @Autowired
     private TagService tagService;
+
     @PostMapping(value = "/create")
     private ResponseEntity<Boolean> create(@RequestBody TagDTO tagDTO,
-                                           HttpServletRequest request){
+                                           HttpServletRequest request) {
         JwtDTO jwtDTO = SecurityUtil.hasRole(request, ProfileRole.MODERATOR);
-        return ResponseEntity.ok(tagService.create(jwtDTO.getId(),tagDTO));
-
+        return ResponseEntity.ok(tagService.create(jwtDTO.getId(), tagDTO));
     }
 }

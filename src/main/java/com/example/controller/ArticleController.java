@@ -77,45 +77,51 @@ public class ArticleController {
                                                                   @RequestBody List<Integer> typeId,
                                                                   HttpServletRequest servletRequest) {
         JwtDTO jwtDTO = SecurityUtil.hasRole(servletRequest, null);
-        return ResponseEntity.ok(articleService.getLast4ByTypesAndExceptGivenArticle(typeId,id));
+        return ResponseEntity.ok(articleService.getLast4ByTypesAndExceptGivenArticle(typeId, id));
     }
+
     @GetMapping(value = "/getMostReadArticle")
-    public ResponseEntity<ArticleDTO> getMostReadArticle(HttpServletRequest request){
+    public ResponseEntity<ArticleDTO> getMostReadArticle(HttpServletRequest request) {
         SecurityUtil.hasRole(request, null);
         return ResponseEntity.ok(articleService.getMostReadArtcle());
     }
+
     @GetMapping(value = "/getLast4ArticlesByTagId")
     public ResponseEntity<List<ArticleDTO>> getLast4ArticlesByTagId(@RequestParam("tagId") Integer id,
-                                                                   HttpServletRequest servletRequest) {
+                                                                    HttpServletRequest servletRequest) {
         SecurityUtil.hasRole(servletRequest, null);
         return ResponseEntity.ok(articleService.getLast4ArticlesByTagId(id));
     }
+
     @GetMapping(value = "/getLast5ArticlesByTypeAndRegion")
     public ResponseEntity<List<ArticleDTO>> getLast5ArticlesByTypeAndRegion(@RequestParam("regionId") Integer regionId,
-                                                                    @RequestBody List<Integer> typeId,
-                                                                    HttpServletRequest servletRequest) {
+                                                                            @RequestBody List<Integer> typeId,
+                                                                            HttpServletRequest servletRequest) {
         SecurityUtil.hasRole(servletRequest, null);
-        return ResponseEntity.ok(articleService.getLast5ArticlesByTypeAndRegion(regionId,typeId));
+        return ResponseEntity.ok(articleService.getLast5ArticlesByTypeAndRegion(regionId, typeId));
     }
+
     @GetMapping(value = "/getArticlesByRegionId")
     public ResponseEntity<PageImpl<ArticleDTO>> getArticlesByRegionId(@RequestParam("regionId") Integer regionId,
                                                                       @RequestParam("page") int page,
                                                                       @RequestParam("size") int size,
-                                                                      HttpServletRequest request){
+                                                                      HttpServletRequest request) {
         SecurityUtil.hasRole(request, null);
-        return ResponseEntity.ok(articleService.getArticleListByRegionId(regionId,page-1,size));
+        return ResponseEntity.ok(articleService.getArticleListByRegionId(regionId, page - 1, size));
     }
+
     @GetMapping(value = "/getArticlesByCategoryId")
     public ResponseEntity<PageImpl<ArticleDTO>> getArticlesByCategoryId(@RequestParam("categoryId") Integer categoryId,
-                                                                      @RequestParam("page") int page,
-                                                                      @RequestParam("size") int size,
-                                                                        HttpServletRequest request){
+                                                                        @RequestParam("page") int page,
+                                                                        @RequestParam("size") int size,
+                                                                        HttpServletRequest request) {
         SecurityUtil.hasRole(request, null);
-        return ResponseEntity.ok(articleService.getArticleListByRegionId(categoryId,page-1,size));
+        return ResponseEntity.ok(articleService.getArticleListByCategoryId(categoryId, page - 1, size));
     }
+
     @GetMapping(value = "/getArticlesByCt")
     public ResponseEntity<List<ArticleDTO>> getArticlesByCt(@RequestParam("categoryId") Integer categoryId,
-                                                            HttpServletRequest request){
+                                                            HttpServletRequest request) {
         SecurityUtil.hasRole(request, null);
         return ResponseEntity.ok(articleService.getLast5ArticleByCt(categoryId));
     }

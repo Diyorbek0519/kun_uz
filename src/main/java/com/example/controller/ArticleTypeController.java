@@ -17,34 +17,39 @@ import java.util.List;
 public class ArticleTypeController {
     @Autowired
     private ArticleTypeService articleTypeService;
+
     @PostMapping(value = "/create")
     public ResponseEntity<ArticleTypeDTO> create(@RequestBody ArticleTypeDTO articleTypeDTO,
-                                                 HttpServletRequest request){
+                                                 HttpServletRequest request) {
         SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(articleTypeService.create(articleTypeDTO));
     }
+
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<Boolean> update(@PathVariable("id") Integer id,
                                           @RequestBody ArticleTypeDTO articleTypeDTO,
-                                         HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
-        return ResponseEntity.ok(articleTypeService.update(id,articleTypeDTO));
+                                          HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
+        return ResponseEntity.ok(articleTypeService.update(id, articleTypeDTO));
     }
+
     @PutMapping(value = "/delete/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable("id") Integer id,
-                                         HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
+                                          HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(articleTypeService.delete(id));
     }
+
     @PostMapping(value = "/getAll")
-    public ResponseEntity<List<ArticleTypeDTO>> getAll( HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
+    public ResponseEntity<List<ArticleTypeDTO>> getAll(HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(articleTypeService.getAll());
     }
+
     @PutMapping(value = "/getByLang")
     public ResponseEntity<List<ArticleTypeDTO>> getByLang(@RequestBody Language language,
-                                                         HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
+                                                          HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(articleTypeService.getByLang(language));
     }
 }

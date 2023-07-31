@@ -21,6 +21,7 @@ public class SecuredFilterConfig {
         bean.addUrlPatterns("/api/v1/articleType/*");
         bean.addUrlPatterns("/api/v1/article/*");
         bean.addUrlPatterns("/api/v1/tag/*");
+        bean.addUrlPatterns("/api/v1/emailHistory/admin/*");
         return bean;
     }
 }

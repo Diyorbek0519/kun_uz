@@ -1,0 +1,9 @@
+###getByemail
+GET localhost:8082/api/v1/emailHistory/getByEmail/dostonbekhamidov059@gmail.com
+
+###getByDate
+GET localhost:8082/api/v1/emailHistory/getByDate/2023-07-31
+
+###get All
+GET localhost:8082/api/v1/emailHistory/admin/getAll?page=1&size=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA4MTEyMTgsImlkIjozLCJyb2xlIjoiQURNSU4iLCJleHAiOjE2OTA4OTc2MTgsImlzcyI6Imt1bnV6IHRlc3QgcG9ydGFsaSJ9.axASG-77omvsLxJnyeFE8-9JSwM35pLU3_p0raO9XpPNTjDqHaQGGPZTmBVg2HFsWLG0Bg3H98HRPpDG8ZxIRA

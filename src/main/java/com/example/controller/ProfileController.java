@@ -19,42 +19,48 @@ import java.util.List;
 public class ProfileController {
     @Autowired
     private ProfileService profileService;
+
     @PostMapping(value = {"/create"})
     public ResponseEntity<ProfileDTO> create(@RequestBody ProfileDTO dto,
-                                             HttpServletRequest request){
-        JwtDTO jwtDTO=SecurityUtil.hasRole(request, ProfileRole.ADMIN);
-        return ResponseEntity.ok(profileService.create(dto,jwtDTO.getId()));
+                                             HttpServletRequest request) {
+        JwtDTO jwtDTO = SecurityUtil.hasRole(request, ProfileRole.ADMIN);
+        return ResponseEntity.ok(profileService.create(dto, jwtDTO.getId()));
     }
+
     @PutMapping(value = "/update")
     public ResponseEntity<Boolean> update(@RequestBody ProfileDTO dto,
-                                         HttpServletRequest request){
-        JwtDTO jwtDTO=SecurityUtil.hasRole(request,ProfileRole.ADMIN);
+                                          HttpServletRequest request) {
+        JwtDTO jwtDTO = SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.update(jwtDTO.getId(), dto));
     }
+
     @PutMapping(value = "/updateDetail")
     public ResponseEntity<Boolean> updateDetail(@RequestBody ProfileDTO dto,
-                                                HttpServletRequest request){
-        JwtDTO jwtDTO =SecurityUtil.hasRole(request,null);
+                                                HttpServletRequest request) {
+        JwtDTO jwtDTO = SecurityUtil.hasRole(request, null);
         return ResponseEntity.ok(profileService.updateDetail(jwtDTO.getId(), dto));
     }
+
     @GetMapping(value = "/getAll")
     public ResponseEntity<PageImpl<ProfileDTO>> getAll(@RequestParam("page") int page,
                                                        @RequestParam("size") int size,
-                                                       HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
-        return ResponseEntity.ok(profileService.profileList(page,size));
+                                                       HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
+        return ResponseEntity.ok(profileService.profileList(page, size));
     }
+
     @DeleteMapping(value = "/{id}")
 
     public ResponseEntity<Boolean> delete(@PathVariable("id") Integer id,
-                                          HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
+                                          HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.delete(id));
     }
+
     @GetMapping(value = "/filter")
     public ResponseEntity<List<ProfileDTO>> filter(@RequestBody ProfileFilterDTO filterDTO,
-                                                  HttpServletRequest request){
-        SecurityUtil.hasRole(request,ProfileRole.ADMIN);
+                                                   HttpServletRequest request) {
+        SecurityUtil.hasRole(request, ProfileRole.ADMIN);
         return ResponseEntity.ok(profileService.filter(filterDTO));
     }
 

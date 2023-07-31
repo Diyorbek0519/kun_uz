@@ -15,12 +15,14 @@ public class ExceptionHandlerController {
     public ResponseEntity<String> handler(AppBadRequestException e) {
         return ResponseEntity.badRequest().body(e.getMessage());
     }
+
     @ExceptionHandler(UnAuthorizedException.class)
     public ResponseEntity<String> handler(UnAuthorizedException e) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
     }
+
     @ExceptionHandler(AppMethodNotAllowedException.class)
-    public ResponseEntity<String> handler(AppMethodNotAllowedException e){
+    public ResponseEntity<String> handler(AppMethodNotAllowedException e) {
         return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(e.getMessage());
     }
 
