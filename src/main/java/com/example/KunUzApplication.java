@@ -9,5 +9,4 @@ public class KunUzApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KunUzApplication.class, args);
 	}
-
 }

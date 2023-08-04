@@ -17,3 +17,24 @@ Content-Type: application/json
   "email": "diyorbekhamidov0519@gmail.com",
   "password": "12345"
 }
+
+
+###registrationByPhone
+POST localhost:8082/api/v1/auth/registrationByphone
+Content-Type: application/json
+
+{
+  "name":"Diyorbek",
+  "surname": "Hamidov",
+  "phone": "+998881231111",
+  "password": "12345"
+}
+
+###verification
+GET localhost:8082/api/v1/auth/verification/phone
+Content-Type: application/json
+
+{
+"message": "7351",
+  "phone": "+998881231111"
+}

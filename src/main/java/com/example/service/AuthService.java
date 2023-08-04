@@ -9,9 +9,10 @@ import com.example.repository.ProfileRepository;
 import com.example.util.JWTUtil;
 import com.example.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,10 @@ public class AuthService {
     private ProfileRepository profileRepository;
     @Autowired
     private MailSenderService mailSenderService;
+    @Autowired
+    private SmsSenderService smsSenderService;
+    @Autowired
+    private SmsHistoryService smsHistoryService;
 
 
     public ApiResponseDTO login(AuthDTO dto) {
@@ -91,5 +96,45 @@ public class AuthService {
         profileRepository.save(entity); // update
         return new ApiResponseDTO(true, "Registration completed");
     }
+
+    public ApiResponseDTO registrationByPhone(RegistrationDTO dto) {
+        // check
+        Optional<ProfileEntity> exists = profileRepository.findByPhone(dto.getPhone());
+        if (exists.isPresent()) {
+            return new ApiResponseDTO(false, "Phone already exists.");
+        }
+        ProfileEntity entity = new ProfileEntity();
+        entity.setName(dto.getName());
+        entity.setPhone(dto.getPhone());
+        entity.setSurname(dto.getSurname());
+        entity.setPassword(MD5Util.encode(dto.getPassword()));
+        entity.setRole(ProfileRole.USER);
+        entity.setStatus(ProfileStatus.REGISTRATION);
+        profileRepository.save(entity);
+
+        SmsDTO smsDTO=smsSenderService.sendSms(dto.getPhone());
+        return new ApiResponseDTO(true, "The verification code is:"+smsDTO.getMessage());
+
+    }
+    public ApiResponseDTO phoneVerification(String message,String phone) {
+        Optional<ProfileEntity> exists=profileRepository.findByPhone(phone);
+        ProfileEntity entity = exists.get();
+        if (!entity.getStatus().equals(ProfileStatus.REGISTRATION)) {
+            throw new AppBadRequestException("Wrong status");
+        }
+        List<SmsHistoryDTO> messages=smsHistoryService.getByPhone(phone);
+        SmsHistoryDTO lastMessage =messages.get(0);
+        if(lastMessage.getCreatedDate().isBefore(LocalDateTime.now().minusMinutes(2))){
+            throw new AppBadRequestException("message expired");
+        }
+        if(!message.equals(lastMessage.getMessage())){
+            throw new AppBadRequestException("password not valid");
+        }
+        entity.setStatus(ProfileStatus.ACTIVE);
+        profileRepository.save(entity); // update
+        return new ApiResponseDTO(true, "Registration completed");
+    }
+
+
 
 }
