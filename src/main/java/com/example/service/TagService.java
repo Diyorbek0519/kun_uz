@@ -5,7 +5,6 @@ import com.example.entity.TagEntity;
 import com.example.enums.Language;
 import com.example.exp.AppBadRequestException;
 import com.example.exp.ItemNotFound;
-import com.example.repository.ArticleTagsRepository;
 import com.example.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

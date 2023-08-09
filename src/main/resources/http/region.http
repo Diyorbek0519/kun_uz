@@ -1,13 +1,13 @@
 ### create
 POST localhost:8082/api/v1/region/admin/create
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2ODk4ODQwMTIsImlkIjo0LCJyb2xlIjoiVVNFUiIsImV4cCI6MTY4OTg4NzYxMiwiaXNzIjoia3VudXogdGVzdCBwb3J0YWxpIn0.gySHuf4DMolOXNtH0EbwuMgxaphtOlNV0oX1CRlbQOcOnv5F6_Lfic5uH_Vx8ytZbzbihkfeY-qVj6pyuOrU6A
+Authorization: Basic Kzk5ODkwMTIzNDU2NzoxMjM0NQ==
 
 {
-  "orderNumber": 3,
-  "nameUz": "Buxoro",
-  "nameRu": "Бухара",
-  "nameEn": "Bukhara"
+  "orderNumber": 8,
+  "nameUz": "Toshkent2",
+  "nameRu": "Tашкент2",
+  "nameEn": "Tashkent2"
 }
 
 ### update

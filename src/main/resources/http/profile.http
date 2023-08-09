@@ -8,7 +8,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTAyMDM4MjgsImlkIjozLCJyb
   "surname": "Sherboyev",
   "email": "123456@mail.ru",
   "phone": "+998881234567",
-  "role": "PUBLISHER",
+  "role": "ROLE_PUBLISHER",
   "password": "12345"
 }
 

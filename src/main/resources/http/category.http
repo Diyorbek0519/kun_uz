@@ -25,6 +25,9 @@ PUT localhost:8082/api/v1/category/delete/1
 
 ###getALL
 GET localhost:8082/api/v1/category/getAll
+Authorization: Basic Kzk5ODkwMTIzNDU2NzoxMjM0NQ==
+
 
 ### get by language (orderNumber null keldi?)
 GET localhost:8082/api/v1/category/getByLang?lang=uz
+Authorization: Basic Kzk5ODkwMTIzNDU2NzoxMjM0NQ==

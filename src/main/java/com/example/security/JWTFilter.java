@@ -9,13 +9,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-@Component
+//@Component
 public class JWTFilter extends GenericFilter {
     //    public static final Map<String, String> openURL = new HashMap<>();
 //    {
 //        openURL.put("/api/v1/auth/login", "");
 //    }
-    @Override
+    //@Override
     public void doFilter(ServletRequest servletRequest,
                          ServletResponse servletResponse,
                          FilterChain filterChain) throws IOException, ServletException {

@@ -50,9 +50,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NTY5OTIsImlkIjoxLCJyb
 
 ###change status
 PUT localhost:8082/api/v1/article/changeStatus?articleId=373b3b12-16be-4862-9fd5-61a70e52647b
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
-
+Authorization: Basic Kzk5ODg4MTIzNDU2NzoxMjM0NQ==
 ###getlast
 GET localhost:8082/api/v1/article/getLast?articleTypeId=3&limit=5
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
@@ -108,9 +106,8 @@ GET localhost:8082/api/v1/article/getArticlesByCategoryId?categoryId=1&page=1&si
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA0NjA1NTMsImlkIjo1LCJyb2xlIjoiUFVCTElTSEVSIiwiZXhwIjoxNjkwNTQ2OTUzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.C-2TUcvbYCdrzMK2Fn59wsR4ugFCR15npAm81hxcjnSbFAE11flJlrTCdb5W1i8KTIEVIegkKhkHQNwwUknNkA
 
 ###getBYRegionIdPagination
-GET localhost:8082/api/v1/article/getArticlesByCt?categoryId=1
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2OTA1NDc0MDMsImlkIjoxLCJyb2xlIjoiTU9ERVJBVE9SIiwiZXhwIjoxNjkwNjMzODAzLCJpc3MiOiJrdW51eiB0ZXN0IHBvcnRhbGkifQ.jl7wyAYTWaIQs-HLV_fn2dyLpIwp7l40IRPmU4xKkX2SNlLZy6hpXiMwbax3zqzF1_qIdMKbjpdvzqZwF-EhVQ
-
+GET localhost:8082/api/v1/article/open/getArticlesByCt?categoryId=1
+Authorization: Basic Kzk5ODg4MTIzNDU2NzoxMjM0NQ==
 
 
 

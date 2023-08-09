@@ -55,7 +55,7 @@ public class AuthService {
         response.setSurname(profileEntity.getSurname());
         response.setRole(profileEntity.getRole());
         response.setPhone(profileEntity.getPhone());
-        response.setJwt(JWTUtil.encode(profileEntity.getId(), profileEntity.getRole()));
+        response.setJwt(JWTUtil.encode(profileEntity.getPhone(), profileEntity.getRole()));
         return new ApiResponseDTO(true, response);
     }
 
@@ -70,7 +70,7 @@ public class AuthService {
         entity.setSurname(dto.getSurname());
         entity.setEmail(dto.getEmail());
         entity.setPassword(MD5Util.encode(dto.getPassword()));
-        entity.setRole(ProfileRole.USER);
+        entity.setRole(ProfileRole.ROLE_USER);
         entity.setStatus(ProfileStatus.REGISTRATION);
         profileRepository.save(entity);
        /* mailSenderService.sendEmail(dto.getEmail(), "Kun uz registration complited", "cacaca");
@@ -108,7 +108,7 @@ public class AuthService {
         entity.setPhone(dto.getPhone());
         entity.setSurname(dto.getSurname());
         entity.setPassword(MD5Util.encode(dto.getPassword()));
-        entity.setRole(ProfileRole.USER);
+        entity.setRole(ProfileRole.ROLE_USER);
         entity.setStatus(ProfileStatus.REGISTRATION);
         profileRepository.save(entity);
 

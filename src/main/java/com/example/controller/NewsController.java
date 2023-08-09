@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-//@RestController
-//@RequestMapping("api/v1/news")
+@RestController
+@RequestMapping("api/v1/news")
 public class NewsController {
-   /* @GetMapping("/test")
+    @GetMapping("/test")
     public String test(){
         return "TEST";
-    }*/
+    }
 }
